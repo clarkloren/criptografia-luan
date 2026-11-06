@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131c">
+  <title>Cifra — laboratório de criptografia</title>
+  <style>
+    :root{color-scheme:dark;--bg:#10131c;--panel:#181d29;--panel2:#202737;--line:#30394b;--text:#f3f5fa;--muted:#a3aec1;--accent:#a9f06b;--accent2:#d5ffad;--pink:#ff8db1;--blue:#8eb8ff;--radius:18px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% -10%,#29344a 0,transparent 38%),var(--bg);color:var(--text);min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}.shell{width:min(1120px,calc(100% - 40px));margin:auto;padding:36px 0 64px}.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:54px}.brand{display:flex;gap:11px;align-items:center;font-weight:750;letter-spacing:-.03em}.brand-icon{height:36px;width:36px;border-radius:11px;background:var(--accent);display:grid;place-items:center;color:#14200d;font-size:19px}.badge{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:8px 12px}.hero{max-width:720px;margin:0 auto 34px;text-align:center}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);font-weight:750}.hero h1{font-size:clamp(36px,6vw,62px);letter-spacing:-.06em;line-height:1.04;margin:15px 0}.hero p{color:var(--muted);font-size:16px;line-height:1.7;margin:0 auto;max-width:590px}.mode-tabs{display:flex;gap:6px;padding:5px;border:1px solid var(--line);border-radius:13px;background:#141923;width:max-content;margin:30px auto 0}.mode-tab{border:0;background:transparent;color:var(--muted);padding:10px 20px;border-radius:9px;font-weight:700}.mode-tab[aria-selected="true"]{background:var(--panel2);color:var(--text)}.mode-tab[aria-selected="true"] .tab-dot{background:var(--accent)}.tab-dot{display:inline-block;width:7px;height:7px;background:var(--blue);border-radius:50%;margin:0 8px 1px 0}.layout{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:start}.card{background:linear-gradient(145deg,#1b202c,#171b26);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 12px 40px #00000017}.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:22px}.card h2{font-size:18px;letter-spacing:-.02em;margin:0 0 6px}.sub{color:var(--muted);font-size:13px;line-height:1.5;margin:0}.step-label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.12em}.field{margin-bottom:18px}.field-label{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:650;margin-bottom:9px}.hint{font-weight:400;color:var(--muted);font-size:11px}.input-wrap{position:relative}input,textarea{width:100%;background:#11151e;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:13px 14px;outline:none;transition:border-color .15s,box-shadow .15s}input:focus,textarea:focus{border-color:#9cda6c;box-shadow:0 0 0 3px #a9f06b1b}textarea{resize:vertical;min-height:124px;line-height:1.55;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px}input::placeholder,textarea::placeholder{color:#697488}.toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:var(--muted);font-size:12px;padding:6px}.pass-input{padding-right:62px}.primary{width:100%;border:0;border-radius:11px;background:var(--accent);color:#18240e;font-weight:800;padding:14px 18px;transition:background .15s,transform .15s}.primary:hover{background:var(--accent2);transform:translateY(-1px)}.primary:disabled{opacity:.55;cursor:wait;transform:none}.secondary{border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--text);padding:8px 11px;font-size:12px;font-weight:650}.note{display:flex;gap:10px;color:var(--muted);font-size:12px;line-height:1.55;margin-top:16px;padding:12px;border-radius:10px;background:#11151e}.note-icon{color:var(--accent);font-weight:900}.status{display:none;margin-top:14px;padding:11px 13px;border-radius:10px;font-size:13px;line-height:1.5}.status.show{display:block}.status.error{background:#ff8db114;border:1px solid #ff8db13a;color:#ffb1c8}.status.success{background:#a9f06b12;border:1px solid #a9f06b38;color:#c5f49f}.result-card{min-height:100%}.result-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.result-top h2{margin:0}.output{min-height:154px;max-height:300px;overflow:auto;word-break:break-all}.empty{color:#758095;font-family:inherit;font-size:13px;display:grid;place-items:center;text-align:center;min-height:112px}.result-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}.details{margin-top:22px;border-top:1px solid var(--line);padding-top:18px}.details h3{margin:0 0 14px;font-size:14px}.timeline{display:grid;gap:13px}.explain-step{display:grid;grid-template-columns:27px 1fr;gap:10px}.num{width:25px;height:25px;border-radius:8px;background:#a9f06b15;color:var(--accent);display:grid;place-items:center;font-size:11px;font-weight:800}.explain-step b{display:block;font-size:12px;margin:1px 0 4px}.explain-step p{font-size:12px;color:var(--muted);line-height:1.55;margin:0}.chip{display:inline-block;font:11px ui-monospace,monospace;color:#d9e3f5;background:#11151e;border:1px solid var(--line);padding:3px 6px;border-radius:5px;margin:3px 2px 0 0;word-break:break-all}.edu{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.edu-box{background:#141923;border:1px solid var(--line);border-radius:12px;padding:15px}.edu-box h3{font-size:12px;margin:0 0 7px}.edu-box p{font-size:11px;color:var(--muted);line-height:1.55;margin:0}.good{color:var(--accent)}.foot{color:#798397;font-size:11px;text-align:center;margin-top:28px;line-height:1.6}.hidden{display:none!important}@media(max-width:760px){.shell{width:min(100% - 28px,560px);padding-top:22px}.topbar{margin-bottom:38px}.badge{font-size:10px}.layout{grid-template-columns:1fr}.card{padding:20px}.hero{margin-bottom:26px}.hero p{font-size:14px}.result-card{min-height:0}}@media(max-width:390px){.edu{grid-template-columns:1fr}.mode-tab{padding:10px 14px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><div class="brand"><span class="brand-icon">⌘</span><span>cifra<span style="color:var(--accent)">.</span></span></div><span class="badge">LABORATÓRIO INTERATIVO · 01</span></header>
+    <section class="hero"><div class="eyebrow">Aprenda fazendo</div><h1>Segredo por segredo.</h1><p>Digite uma mensagem e veja como a criptografia a transforma — e como a chave certa pode trazê-la de volta.</p><div class="mode-tabs" role="tablist" aria-label="Modo de operação"><button class="mode-tab" id="encryptTab" role="tab" aria-selected="true"><span class="tab-dot"></span>Criptografar</button><button class="mode-tab" id="decryptTab" role="tab" aria-selected="false"><span class="tab-dot"></span>Descriptografar</button></div></section>
+    <div class="layout">
+      <section class="card" aria-labelledby="formTitle"><div class="card-head"><div><h2 id="formTitle">Prepare sua mensagem</h2><p class="sub" id="formSubtitle">Qualquer letra, número, espaço ou símbolo funciona.</p></div><span class="step-label" id="stepLabel">01 / 02</span></div>
+        <div id="encryptFields"><div class="field"><label class="field-label" for="plainText">Mensagem para proteger <span class="hint" id="charCount">0 / 5.000</span></label><textarea id="plainText" maxlength="5000" placeholder="Ex.: Café ☕ — código #42!" autocomplete="off" spellcheck="false"></textarea></div><div class="field"><label class="field-label" for="encryptPassword">Chave secreta <span class="hint">não compartilhe</span></label><div class="input-wrap"><input id="encryptPassword" class="pass-input" type="password" maxlength="256" placeholder="Crie uma frase secreta" autocomplete="new-password"><button class="toggle" data-target="encryptPassword" type="button">Mostrar</button></div></div></div>
+        <div id="decryptFields" class="hidden"><div class="field"><label class="field-label" for="encryptedText">Texto criptografado <span class="hint">JSON gerado pelo Cifra</span></label><textarea id="encryptedText" maxlength="50000" placeholder="Cole aqui o resultado JSON da criptografia…" spellcheck="false"></textarea></div><div class="field"><label class="field-label" for="decryptPassword">Chave secreta</label><div class="input-wrap"><input id="decryptPassword" class="pass-input" type="password" maxlength="256" placeholder="Use a mesma chave secreta" autocomplete="off"><button class="toggle" data-target="decryptPassword" type="button">Mostrar</button></div></div></div>
+        <button id="actionButton" class="primary" type="button">Criptografar mensagem <span aria-hidden="true">→</span></button><div id="status" class="status" role="status" aria-live="polite"></div>
+        <div class="note"><span class="note-icon">✳</span><span>A chave não é enviada nem salva. Todo o processo acontece neste navegador.</span></div>
+      </section>
+      <section class="card result-card" aria-labelledby="resultTitle"><div class="result-top"><h2 id="resultTitle">O resultado</h2><span class="step-label" id="resultBadge">AGUARDANDO</span></div><div id="output" class="output empty" aria-live="polite">Sua mensagem transformada aparecerá aqui.</div><div id="resultActions" class="result-actions hidden"><button id="copyButton" class="secondary" type="button">Copiar resultado</button><button id="useButton" class="secondary" type="button">Usar para descriptografar</button></div><div id="details" class="details hidden"><h3 id="detailsTitle">O que aconteceu?</h3><div id="timeline" class="timeline"></div></div></section>
+    </div>
+    <section class="edu"><article class="edu-box"><h3><span class="good">●</span> AES-GCM</h3><p>Um algoritmo moderno que cifra os dados e também detecta alterações. A mesma chave secreta é usada para cifrar e decifrar.</p></article><article class="edu-box"><h3><span style="color:var(--blue)">●</span> PBKDF2 + salt</h3><p>Sua frase vira uma chave de 256 bits. Um salt aleatório e muitas iterações tornam mais difícil adivinhar a chave.</p></article></section>
+    <footer class="foot">Demonstração educativa. Não use este site para armazenar senhas reais ou dados sensíveis.<br>Requer navegador moderno e conexão segura (HTTPS ou localhost).</footer>
+  </main>
+<script>
+(() => {
+  'use strict';
+  const ITERATIONS = 250000;
+  const $ = id => document.getElementById(id);
+  const encoder = new TextEncoder();
+  const decoder = new TextDecoder('utf-8', { fatal: true });
+  let lastEncrypted = '';
+
+  function bytesToBase64(bytes) {
+    let binary = '';
+    for (let i = 0; i < bytes.length; i += 0x8000) binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+    return btoa(binary);
+  }
+  function base64ToBytes(value) {
+    if (typeof value !== 'string' || value.length > 50000 || !/^[A-Za-z0-9+/]*={0,2}$/.test(value) || value.length % 4 !== 0) throw new Error('O campo criptografado não contém Base64 válido.');
+    const binary = atob(value);
+    return Uint8Array.from(binary, ch => ch.charCodeAt(0));
+  }
+  function showStatus(message, kind) {
+    const box = $('status'); box.textContent = message; box.className = `status show ${kind}`;
+  }
+  function resetResult() {
+    $('output').className = 'output empty'; $('output').textContent = 'Sua mensagem transformada aparecerá aqui.';
+    $('resultBadge').textContent = 'AGUARDANDO'; $('resultActions').classList.add('hidden'); $('details').classList.add('hidden'); lastEncrypted = '';
+  }
+  function addStep(number, title, content) {
+    const row = document.createElement('div'); row.className = 'explain-step';
+    const n = document.createElement('span'); n.className = 'num'; n.textContent = number;
+    const body = document.createElement('div'); const strong = document.createElement('b'); strong.textContent = title;
+    const p = document.createElement('p'); p.innerHTML = content;
+    body.append(strong, p); row.append(n, body); $('timeline').append(row);
+  }
+  function setResult(text, encrypted, explanation, badge) {
+    const out = $('output'); out.className = 'output'; out.textContent = text;
+    $('resultBadge').textContent = badge; $('details').classList.remove('hidden'); $('resultActions').classList.remove('hidden');
+    $('useButton').classList.toggle('hidden', !encrypted); $('timeline').replaceChildren(); explanation();
+    lastEncrypted = encrypted ? text : '';
+  }
+  async function deriveKey(password, salt, iterations) {
+    const material = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveKey']);
+    return crypto.subtle.deriveKey({name:'PBKDF2', salt, iterations, hash:'SHA-256'}, material, {name:'AES-GCM', length:256}, false, ['encrypt','decrypt']);
+  }
+  function requireCrypto() {
+    if (!globalThis.crypto?.subtle) throw new Error('A criptografia segura não está disponível. Abra esta página em HTTPS ou localhost usando um navegador moderno.');
+  }
+  async function encrypt() {
+    requireCrypto(); const message = $('plainText').value; const password = $('encryptPassword').value;
+    if (!message) throw new Error('Digite uma mensagem para criptografar.');
+    if (!password) throw new Error('Digite uma chave secreta.');
+    const salt = crypto.getRandomValues(new Uint8Array(16)); const iv = crypto.getRandomValues(new Uint8Array(12));
+    const key = await deriveKey(password, salt, ITERATIONS);
+    const plainBytes = encoder.encode(message);
+    const encrypted = new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM', iv}, key, plainBytes));
+    const payload = {version:1, algorithm:'AES-GCM', kdf:'PBKDF2-SHA-256', iterations:ITERATIONS, salt:bytesToBase64(salt), iv:bytesToBase64(iv), data:bytesToBase64(encrypted)};
+    const result = JSON.stringify(payload, null, 2);
+    $('detailsTitle').textContent = 'Como sua mensagem foi protegida';
+    setResult(result, true, () => {
+      addStep('1','Mensagem convertida em bytes',`Os <strong>${plainBytes.length} bytes</strong> em UTF-8 representam exatamente seu texto, incluindo acentos, emojis e símbolos.`);
+      addStep('2','Chave derivada da sua frase',`PBKDF2-SHA-256 executado <strong>${ITERATIONS.toLocaleString('pt-BR')} vezes</strong> com um salt aleatório de 16 bytes cria uma chave AES de 256 bits. A frase original não é guardada.`);
+      addStep('3','AES-GCM cifra e autentica',`Um IV aleatório de 12 bytes garante uma operação única. O resultado (incluindo a etiqueta de autenticação) vira Base64 dentro do JSON. <span class="chip">${encrypted.length} bytes cifrados</span>`);
+    }, 'CRIPTOGRAFADO');
+    showStatus('Mensagem criptografada com sucesso. Guarde o JSON e lembre-se da chave secreta.', 'success');
+  }
+  async function decrypt() {
+    requireCrypto(); const input = $('encryptedText').value.trim(); const password = $('decryptPassword').value;
+    if (!input) throw new Error('Cole o JSON criptografado.');
+    if (!password) throw new Error('Digite a chave secreta usada na criptografia.');
+    let payload; try { payload = JSON.parse(input); } catch { throw new Error('JSON inválido. Cole o resultado completo da criptografia.'); }
+    if (!payload || payload.version !== 1 || payload.algorithm !== 'AES-GCM' || payload.kdf !== 'PBKDF2-SHA-256') throw new Error('Formato ou algoritmo não reconhecido. Use um JSON gerado por esta demonstração.');
+    if (!Number.isInteger(payload.iterations) || payload.iterations < 100000 || payload.iterations > 1000000) throw new Error('Número de iterações inválido.');
+    const salt = base64ToBytes(payload.salt), iv = base64ToBytes(payload.iv), data = base64ToBytes(payload.data);
+    if (salt.length !== 16 || iv.length !== 12 || data.length < 16) throw new Error('Dados incompletos ou inválidos no JSON.');
+    const key = await deriveKey(password, salt, payload.iterations);
+    let plainBytes;
+    try { plainBytes = new Uint8Array(await crypto.subtle.decrypt({name:'AES-GCM', iv}, key, data)); }
+    catch { throw new Error('Não foi possível descriptografar. Confira a chave e se o JSON está intacto.'); }
+    let message; try { message = decoder.decode(plainBytes); } catch { throw new Error('Os dados descriptografados não são um texto UTF-8 válido.'); }
+    $('detailsTitle').textContent = 'Como a mensagem foi recuperada';
+    setResult(message, false, () => {
+      addStep('1','Parâmetros recuperados',`O JSON forneceu o salt (<strong>${salt.length} bytes</strong>), o IV (<strong>${iv.length} bytes</strong>) e o número de iterações. Esses dados não são secretos: são necessários para repetir a operação.`);
+      addStep('2','Mesma chave derivada',`Com sua frase secreta, o mesmo PBKDF2-SHA-256 e salt, o navegador recriou a chave AES de 256 bits. <span class="chip">${payload.iterations.toLocaleString('pt-BR')} iterações</span>`);
+      addStep('3','Integridade verificada e texto decifrado',`AES-GCM validou a etiqueta de autenticação antes de liberar os dados. Os <strong>${plainBytes.length} bytes</strong> foram decodificados de UTF-8 para recuperar a mensagem original.`);
+    }, 'DESCRIPTOGRAFADO');
+    showStatus('Descriptografia concluída. A autenticação confirmou que os dados e a chave correspondem.', 'success');
+  }
+  function setMode(mode) {
+    const decryptMode = mode === 'decrypt';
+    $('encryptTab').setAttribute('aria-selected', String(!decryptMode)); $('decryptTab').setAttribute('aria-selected', String(decryptMode));
+    $('encryptFields').classList.toggle('hidden', decryptMode); $('decryptFields').classList.toggle('hidden', !decryptMode);
+    $('formTitle').textContent = decryptMode ? 'Recupere sua mensagem' : 'Prepare sua mensagem';
+    $('formSubtitle').textContent = decryptMode ? 'Cole o JSON criptografado e informe a mesma chave.' : 'Qualquer letra, número, espaço ou símbolo funciona.';
+    $('stepLabel').textContent = decryptMode ? '02 / 02' : '01 / 02';
+    $('actionButton').innerHTML = decryptMode ? 'Descriptografar mensagem <span aria-hidden="true">→</span>' : 'Criptografar mensagem <span aria-hidden="true">→</span>';
+    $('status').className = 'status'; resetResult();
+  }
+  $('encryptTab').addEventListener('click', () => setMode('encrypt'));
+  $('decryptTab').addEventListener('click', () => setMode('decrypt'));
+  $('actionButton').addEventListener('click', async () => {
+    const button = $('actionButton'); button.disabled = true; button.textContent = 'Processando com segurança…'; $('status').className = 'status';
+    try { if ($('decryptTab').getAttribute('aria-selected') === 'true') await decrypt(); else await encrypt(); }
+    catch (error) { showStatus(error.message || 'Ocorreu um erro durante o processamento.', 'error'); }
+    finally { button.disabled = false; button.innerHTML = $('decryptTab').getAttribute('aria-selected') === 'true' ? 'Descriptografar mensagem <span aria-hidden="true">→</span>' : 'Criptografar mensagem <span aria-hidden="true">→</span>'; }
+  });
+  $('plainText').addEventListener('input', () => { $('charCount').textContent = `${$('plainText').value.length.toLocaleString('pt-BR')} / 5.000`; });
+  document.querySelectorAll('.toggle').forEach(button => button.addEventListener('click', () => { const input = $(button.dataset.target); const visible = input.type === 'text'; input.type = visible ? 'password' : 'text'; button.textContent = visible ? 'Mostrar' : 'Ocultar'; }));
+  $('copyButton').addEventListener('click', async () => {
+    const text = $('output').textContent;
+    try { await navigator.clipboard.writeText(text); $('copyButton').textContent = 'Copiado!'; setTimeout(() => $('copyButton').textContent = 'Copiar resultado', 1600); }
+    catch { showStatus('Não foi possível acessar a área de transferência. Selecione e copie o resultado manualmente.', 'error'); }
+  });
+  $('useButton').addEventListener('click', () => { if (!lastEncrypted) return; $('encryptedText').value = lastEncrypted; setMode('decrypt'); $('encryptedText').value = lastEncrypted; $('decryptPassword').focus(); });
+})();
+</script>
+</body>
+</html>
